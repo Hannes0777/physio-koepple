@@ -8,7 +8,7 @@
 <title>Physiotherapie Köpple – Praxis in Welzheim-Breitenfürst</title>
 <link rel="icon" href="assets/images/logo.png" type="image/png">
 <link rel="stylesheet" href="css/fonts.css">
-<link rel="stylesheet" href="css/style.css?v=2">
+<link rel="stylesheet" href="css/style.css?v=3">
 </head>
 <body>
 
@@ -19,52 +19,40 @@
     <a href="index.html" class="site-header__brand" aria-label="Physiotherapie Köpple – Startseite">
       <img src="assets/images/logo.png" alt="Physiotherapie Köpple" class="site-header__logo">
     </a>
+    <nav id="site-nav" aria-label="Hauptnavigation">
+      <ul class="site-nav__list">
+        <li><a href="index.html" class="site-nav__link">Start</a></li>
+        <li><a href="leistungen.html" class="site-nav__link">Leistungen</a></li>
+        <li><a href="team.html" class="site-nav__link">Team</a></li>
+        <li><a href="kontakt.html" class="site-nav__link">Kontakt</a></li>
+      </ul>
+    </nav>
     <div class="site-header__actions">
-      <a href="tel:+497182802840" class="icon-btn" aria-label="Anrufen: 07182 802840">
+      <a href="tel:+497182802840" class="site-header__phone">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>07182 802840</span>
       </a>
-      <button id="nav-toggle" class="icon-btn nav-toggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="site-nav">
+      <button id="nav-toggle" class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="site-nav">
         <span></span><span></span><span></span>
       </button>
     </div>
   </div>
 </header>
 
-<nav id="site-nav" aria-label="Hauptnavigation">
-  <div class="site-nav__top">
-    <img src="assets/images/logo.png" alt="" class="site-header__logo" aria-hidden="true" style="filter: brightness(0) invert(1); opacity:.92;">
-    <button id="nav-close" class="icon-btn site-nav__close" aria-label="Menü schließen">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </button>
-  </div>
-  <div class="site-nav__body">
-    <ul class="site-nav__list">
-      <li><a href="index.html" class="site-nav__link">Start</a></li>
-      <li><a href="leistungen.html" class="site-nav__link">Leistungen</a></li>
-      <li><a href="team.html" class="site-nav__link">Team</a></li>
-      <li><a href="kontakt.html" class="site-nav__link">Kontakt</a></li>
-    </ul>
-  </div>
-  <div class="site-nav__foot">
-    <a href="tel:+497182802840">07182 802840</a>
-    <a href="mailto:physiokoepple@gmx.net">physiokoepple@gmx.net</a>
-  </div>
-</nav>
-
 <main id="main">
 
   <!-- ── Hero ─────────────────────────────────────────────── -->
-  <section class="hero block--green">
+  <section class="hero">
     <div class="container hero__grid">
       <div class="hero__text">
-        <p class="eyebrow">Physiotherapie in Welzheim-Breitenfürst</p>
+        <p class="eyebrow" style="color: var(--color-terracotta);">Physiotherapie in Welzheim-Breitenfürst</p>
         <h1 class="hero__title">Behandlung, die
           <span class="hero__underline">zuhört<svg viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3,12 Q50,2 100,11 T197,9"/></svg></span>.
         </h1>
         <p class="lead hero__lead">Eine kleine, familiäre Praxis mitten im Wohngebiet – mit Krankengymnastik, Lymphdrainage und mehr behandeln wir Sie persönlich statt im Akkord. Barrierefrei, wohnortnah, für alle Kassen zugelassen.</p>
         <div class="hero__ctas">
           <a href="tel:+497182802840" class="btn btn--primary btn--lg">Termin anfragen</a>
-          <a href="leistungen.html" class="btn btn--outline btn--lg">Leistungen ansehen</a>
+          <a href="leistungen.html" class="btn btn--on-sage btn--outline btn--lg">Leistungen ansehen</a>
         </div>
         <div class="hero__facts">
           <span class="hero__fact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Alle Kassen zugelassen</span>
@@ -82,33 +70,33 @@
         </div>
       </div>
     </div>
-    <div class="wave wave--cream" aria-hidden="true"><svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path d="M0,32 C240,90 480,0 720,40 C960,80 1200,10 1440,46 L1440,100 L0,100 Z"/></svg></div>
+    <div class="hero__wave" aria-hidden="true"><svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path d="M0,32 C240,90 480,0 720,40 C960,80 1200,10 1440,46 L1440,100 L0,100 Z"/></svg></div>
   </section>
 
   <!-- ── Vorteile ─────────────────────────────────────────── -->
-  <section class="block block--cream">
+  <section class="section">
     <div class="container">
-      <div class="block__head reveal">
+      <div class="section__head reveal">
         <p class="eyebrow">Warum Physio Köpple</p>
         <h2>Kurze Wege, viel Zeit für Sie</h2>
       </div>
-      <div class="stat-row reveal-group">
-        <div class="stat-row__item reveal">
-          <div class="stat-row__icon">
+      <div class="feature-grid reveal-group">
+        <div class="feature-card reveal">
+          <div class="feature-card__icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
           </div>
           <h3>Barrierefrei</h3>
           <p>Zugang, Behandlungsräume und Patiententoilette sind ohne Treppen erreichbar – gut zugänglich für alle.</p>
         </div>
-        <div class="stat-row__item reveal">
-          <div class="stat-row__icon">
+        <div class="feature-card reveal">
+          <div class="feature-card__icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           </div>
           <h3>Parkplätze vor der Tür</h3>
           <p>Direkt vor der Praxis in Welzheim-Breitenfürst – kein Suchen nach einem Parkplatz vor dem Termin.</p>
         </div>
-        <div class="stat-row__item reveal">
-          <div class="stat-row__icon">
+        <div class="feature-card reveal">
+          <div class="feature-card__icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           </div>
           <h3>Flexible Termine</h3>
@@ -116,46 +104,48 @@
         </div>
       </div>
     </div>
-    <div class="wave wave--green" aria-hidden="true"><svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path d="M0,50 C240,10 480,90 720,50 C960,10 1200,80 1440,40 L1440,100 L0,100 Z"/></svg></div>
   </section>
 
   <!-- ── Leistungen-Überblick ─────────────────────────────── -->
-  <section class="block block--green" id="leistungen-uebersicht">
+  <section class="section section--alt" id="leistungen-uebersicht">
     <div class="container">
-      <div class="block__head reveal">
+      <div class="section__head section__head--center reveal">
         <p class="eyebrow">Unsere Leistungen</p>
         <h2>Kassenleistungen für Ihre Beweglichkeit</h2>
         <p class="lead">Alle Behandlungen sind für gesetzliche und private Krankenkassen zugelassen.</p>
       </div>
-      <div class="numbered-list reveal-group">
-        <div class="numbered-list__item reveal">
-          <span class="numbered-list__num">01</span>
-          <div><h3>Krankengymnastik</h3><p>Individuell abgestimmte Übungen für Beweglichkeit, Kraft und Koordination.</p></div>
-        </div>
-        <div class="numbered-list__item reveal">
-          <span class="numbered-list__num">02</span>
-          <div><h3>Lymphdrainage</h3><p>Manuelle Entstauungstherapie des Lymphsystems bei Schwellungen und Ödemen.</p></div>
-        </div>
-        <div class="numbered-list__item reveal">
-          <span class="numbered-list__num">03</span>
-          <div><h3>Massagen</h3><p>Manuelle Gewebetherapie zur Lockerung verspannter Muskulatur.</p></div>
-        </div>
-        <div class="numbered-list__item reveal">
-          <span class="numbered-list__num">04</span>
-          <div><h3>Hausbesuche</h3><p>Wenn der Weg in die Praxis nicht möglich ist, kommen wir zu Ihnen.</p></div>
-        </div>
-        <div class="numbered-list__item reveal">
-          <span class="numbered-list__num">05</span>
+      <div class="service-grid reveal-group">
+        <div class="service-card reveal">
+          <div class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
           <div><h3>Elektrotherapie</h3><p>Gezielte elektrische Reize zur Schmerzlinderung und Muskelaktivierung.</p></div>
         </div>
+        <div class="service-card reveal">
+          <div class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
+          <div><h3>Hausbesuche</h3><p>Wenn der Weg in die Praxis nicht möglich ist, kommen wir zu Ihnen.</p></div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="22"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="4.93" y1="19.07" x2="19.07" y2="4.93"/></svg></div>
+          <div><h3>Kälteanwendungen</h3><p>Kryotherapie zur Schmerzlinderung bei akuten Beschwerden.</p></div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+          <div><h3>Krankengymnastik</h3><p>Individuelle Bewegungs- und Übungsbehandlung für Ihre Beweglichkeit.</p></div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></div>
+          <div><h3>Lymphdrainage</h3><p>Manuelle Entstauungstherapie des Lymphsystems.</p></div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+          <div><h3>Massagen</h3><p>Manuelle Gewebetherapie zur Lockerung verspannter Muskulatur.</p></div>
+        </div>
       </div>
-      <p style="margin-top: 40px;"><a href="leistungen.html" class="btn btn--on-green">Alle 9 Leistungen im Detail</a></p>
+      <p style="text-align:center; margin-top: 40px;"><a href="leistungen.html" class="btn btn--outline">Alle 9 Leistungen im Detail</a></p>
     </div>
-    <div class="wave wave--cream" aria-hidden="true"><svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path d="M0,32 C240,90 480,0 720,40 C960,80 1200,10 1440,46 L1440,100 L0,100 Z"/></svg></div>
   </section>
 
   <!-- ── Praxis-Vorstellung ───────────────────────────────── -->
-  <section class="block block--cream">
+  <section class="section">
     <div class="container split">
       <div class="split__text reveal">
         <p class="eyebrow">Unsere Praxis</p>
@@ -174,31 +164,29 @@
         </div>
       </div>
     </div>
-    <div class="wave wave--orange" aria-hidden="true"><svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path d="M0,50 C240,10 480,90 720,50 C960,10 1200,80 1440,40 L1440,100 L0,100 Z"/></svg></div>
   </section>
 
   <!-- ── CTA-Band ─────────────────────────────────────────── -->
-  <section class="block block--orange">
+  <section class="section section--sage">
     <div class="container cta-band reveal">
-      <p class="eyebrow" style="color: var(--color-ink);">Termin vereinbaren</p>
+      <p class="eyebrow" style="color: var(--color-terracotta);">Termin vereinbaren</p>
       <h2>Rufen Sie uns an – wir finden einen Termin, der passt.</h2>
-      <p class="lead" style="color: rgba(43,36,22,0.75); margin-left:auto; margin-right:auto;">Da unsere Öffnungszeiten flexibel sind, bitten wir um eine kurze telefonische Terminanfrage statt spontanem Vorbeikommen.</p>
+      <p class="lead" style="color: rgba(255,255,255,0.82); margin-left:auto; margin-right:auto;">Da unsere Öffnungszeiten flexibel sind, bitten wir um eine kurze telefonische Terminanfrage statt spontanem Vorbeikommen.</p>
       <div class="hero__ctas" style="justify-content:center;">
-        <a href="tel:+497182802840" class="btn btn--on-green btn--lg">07182 802840 anrufen</a>
-        <a href="kontakt.html" class="btn btn--outline btn--lg">Anfahrt &amp; Kontakt</a>
+        <a href="tel:+497182802840" class="btn btn--primary btn--lg">07182 802840 anrufen</a>
+        <a href="kontakt.html" class="btn btn--on-sage btn--outline btn--lg">Anfahrt &amp; Kontakt</a>
       </div>
     </div>
-    <div class="wave wave--green-deep" aria-hidden="true"><svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path d="M0,32 C240,90 480,0 720,40 C960,80 1200,10 1440,46 L1440,100 L0,100 Z"/></svg></div>
   </section>
 
 </main>
 
-<footer class="site-footer block--green-deep">
+<footer class="site-footer">
   <div class="container">
     <div class="footer-grid">
       <div>
         <div class="footer-brand">Physio Köpple</div>
-        <p style="color: rgba(251,243,226,0.75);">Praxis für Physiotherapie/Krankengymnastik in Welzheim-Breitenfürst. Persönlich, barrierefrei, für alle Kassen zugelassen.</p>
+        <p>Praxis für Physiotherapie/Krankengymnastik in Welzheim-Breitenfürst. Persönlich, barrierefrei, für alle Kassen zugelassen.</p>
       </div>
       <div>
         <h4>Navigation</h4>
@@ -227,6 +215,6 @@
   </div>
 </footer>
 
-<script src="js/main.js?v=2"></script>
+<script src="js/main.js?v=3"></script>
 </body>
 </html>
