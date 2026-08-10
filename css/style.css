@@ -30,6 +30,8 @@
   --container-width: 1180px;
   --radius: 18px;
   --radius-lg: 30px;
+  --radius-pill: 100px;
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
   --shadow-soft: 0 10px 30px rgba(59, 50, 39, 0.12);
   --shadow-card: 0 18px 42px rgba(59, 50, 39, 0.16);
   --nav-height: 84px;
@@ -115,10 +117,10 @@ p:last-child { margin-bottom: 0; }
   font-weight: 700;
   font-size: 1rem;
   padding: 0.95em 1.7em;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   border: 2px solid transparent;
   cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+  transition: background-color 0.2s var(--ease), color 0.2s var(--ease), border-color 0.2s var(--ease), transform 0.15s var(--ease), box-shadow 0.2s var(--ease);
   line-height: 1.1;
 }
 .btn:active { transform: translateY(1px); }
@@ -215,123 +217,95 @@ p:last-child { margin-bottom: 0; }
   .site-header__logo { height: 46px; }
 }
 
-/* ── Hero: sattes Tannengrün mit dezentem Punktmuster ───────────
-   (angelehnt an Ebnisee/Schmalzried: EIN kräftiger Hero-Block,
-   danach eine einzige Wellen-Trennkante zu Creme — keine
-   wiederholten Farbflächen mehr). ────────────────────────────── */
-.hero {
-  position: relative;
-  overflow: hidden;
-  background: var(--color-sage-dark);
-  color: var(--color-cream);
-  padding: 56px 0 0;
-}
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  opacity: 0.5;
-  background-image: radial-gradient(rgba(250, 242, 228, 0.12) 1.5px, transparent 1.5px);
-  background-size: 22px 22px;
-  pointer-events: none;
-}
-.hero__grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; padding-bottom: 96px; }
-.hero__title { margin-bottom: 0.4em; color: var(--color-white); }
-.hero__underline { position: relative; display: inline-block; white-space: nowrap; color: var(--color-terracotta); font-style: italic; }
-.hero__underline svg { position: absolute; left: 0; bottom: -0.1em; width: 100%; height: 0.3em; overflow: visible; }
-.hero__underline path {
-  fill: none;
-  stroke: var(--color-terracotta);
-  stroke-width: 6;
-  stroke-linecap: round;
-  stroke-dasharray: 340;
-  stroke-dashoffset: 340;
-}
-.js .reveal--visible .hero__underline path { animation: draw-underline 0.9s 0.35s ease forwards; }
-@keyframes draw-underline { to { stroke-dashoffset: 0; } }
-.hero__lead { margin: 1.1em 0 1.8em; color: rgba(250, 242, 228, 0.82); }
-.hero__ctas { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 2em; }
-.hero__facts { display: flex; flex-wrap: wrap; gap: 10px; padding-top: 1.6em; border-top: 1px solid rgba(250, 242, 228, 0.18); }
-.hero__fact {
+/* ── Hero: großes foto-gefülltes Wort statt Farbblock ───────────
+   Heller Cream-Hintergrund, ruhige Trust-Chips über der Headline.
+   "zuhört" trägt ein Duoton-Foto aus dem Übungsraum direkt in den
+   Buchstaben (background-clip: text + background-blend-mode: color –
+   kein separates Bild-Asset nötig). Keine Wellen-Trennkante mehr –
+   die Stats-Leiste direkt darunter übernimmt den kräftigen Farbmoment. */
+.hero { padding: 64px 0 88px; }
+.hero__inner { max-width: 760px; }
+.hero__chips { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 1.6em; }
+.hero__chip {
   display: inline-flex;
   align-items: center;
   gap: 0.5em;
   font-weight: 700;
-  color: var(--color-white);
+  color: var(--color-sage-dark);
   font-size: 0.85rem;
-  background: rgba(250, 242, 228, 0.08);
-  border: 1px solid rgba(250, 242, 228, 0.22);
+  background: var(--color-sage-pale);
+  border: 1px solid rgba(30, 74, 42, 0.12);
   padding: 0.55em 1.1em;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
 }
-.hero__fact svg { width: 16px; height: 16px; color: var(--color-terracotta); flex-shrink: 0; }
+.hero__chip svg { width: 16px; height: 16px; color: var(--color-terracotta); flex-shrink: 0; }
 
-.hero__photo-wrap { position: relative; z-index: 1; }
-.hero__photo {
-  border-radius: var(--blob-1);
-  overflow: hidden;
-  box-shadow: var(--shadow-card);
-  aspect-ratio: 4 / 4.6;
+.hero__title { margin-bottom: 0.35em; }
+.hero__title-lead { display: block; font-size: clamp(1.7rem, 3.2vw, 2.4rem); font-weight: 500; color: var(--color-ink); }
+.hero__title-word {
+  display: block;
+  font-style: italic;
+  font-weight: 700;
+  font-size: clamp(4.6rem, 14vw, 9.5rem);
+  line-height: 0.92;
+  letter-spacing: -0.01em;
+  background-image: linear-gradient(135deg, var(--color-terracotta) 0%, var(--color-sage-dark) 100%), url('../assets/images/behandlungsraum-uebungen.jpg');
+  background-blend-mode: color;
+  background-size: cover, cover;
+  background-position: center, center 30%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
 }
-.hero__photo img { width: 100%; height: 100%; object-fit: cover; }
-.hero__badge {
-  position: absolute;
-  bottom: -22px;
-  left: -22px;
-  background: var(--color-white);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-card);
-  padding: 16px 20px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  max-width: 230px;
-}
-.hero__badge svg { width: 30px; height: 30px; color: var(--color-terracotta); flex-shrink: 0; }
-.hero__badge strong { display: block; font-family: var(--font-display); font-size: 1.15rem; color: var(--color-sage-dark); line-height: 1; }
-.hero__badge span { font-size: 0.82rem; color: var(--color-ink-soft); }
+.hero__lead { margin: 0.3em 0 1.8em; }
+.hero__ctas { display: flex; flex-wrap: wrap; gap: 16px; }
 
-.hero__wave { position: absolute; left: 0; right: 0; bottom: -1px; line-height: 0; z-index: 1; }
-.hero__wave svg { width: 100%; height: 64px; display: block; }
-.hero__wave path { fill: var(--color-cream); }
+/* ── Trust-Stats-Leiste ─────────────────────────────────────────
+   Vollflächiges Tannengrün direkt unter dem Hero – übernimmt den
+   kräftigen Farbmoment, den vorher der Wellen-Hero trug. */
+.stats-band { background: var(--color-sage-dark); padding: 52px 0; }
+.stats-band__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; text-align: center; }
+.stats-band__item { display: flex; flex-direction: column; gap: 0.25em; }
+.stats-band__num { font-family: var(--font-display); font-weight: 700; font-size: clamp(2.1rem, 3.6vw, 3rem); color: var(--color-terracotta); line-height: 1; }
+.stats-band__unit { font-size: 0.4em; margin-left: 0.15em; }
+.stats-band__label { font-size: 0.8rem; color: rgba(255, 255, 255, 0.78); font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
 
 @media (max-width: 900px) {
-  .hero__grid { grid-template-columns: 1fr; gap: 44px; padding-bottom: 72px; }
-  .hero__photo-wrap { order: -1; max-width: 380px; margin: 0 auto; }
-  .hero__badge { left: 50%; transform: translateX(-50%); bottom: -18px; }
+  .hero__title-word { font-size: clamp(3.6rem, 16vw, 7rem); }
 }
-@media (max-width: 640px) { .hero__wave svg { height: 40px; } }
+@media (max-width: 620px) {
+  .hero { padding: 48px 0 56px; }
+  .stats-band__grid { grid-template-columns: 1fr 1fr; gap: 28px 20px; }
+}
 
 /* ── Organic photo frames (allgemein wiederverwendbar) ──────────── */
 .blob-frame { border-radius: var(--blob-1); overflow: hidden; box-shadow: var(--shadow-card); }
 .blob-frame--alt { border-radius: var(--blob-2); }
 .blob-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-/* ── Vorteile / Feature-Karten ───────────────────────────────── */
-.feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
-.feature-card {
-  background: var(--color-paper);
-  border-radius: var(--radius);
-  padding: 32px 28px;
-  box-shadow: var(--shadow-soft);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-.feature-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-card); }
-.feature-card__icon {
-  width: 56px; height: 56px;
+/* ── Vorteile / Pillars ──────────────────────────────────────────
+   Zurückhaltende Regel-Liste statt Karte+Schatten – Gegengewicht zur
+   Leistungen-Übersicht, die als einziger bewusster Karten-Moment der
+   Seite stehen bleibt. */
+.pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+.pillar { padding-top: 22px; border-top: 2px solid var(--color-terracotta); }
+.pillar__icon {
+  width: 40px; height: 40px;
   display: flex; align-items: center; justify-content: center;
-  border-radius: var(--blob-2);
-  background: var(--color-sage-pale);
   color: var(--color-sage-dark);
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
-.feature-card__icon svg { width: 28px; height: 28px; }
-.feature-card p { color: var(--color-ink-soft); font-size: 0.98rem; }
+.pillar__icon svg { width: 100%; height: 100%; }
+.pillar p { color: var(--color-ink-soft); font-size: 0.98rem; }
 
-@media (max-width: 860px) { .feature-grid { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 560px) { .feature-grid { grid-template-columns: 1fr; } }
+@media (max-width: 860px) { .pillars { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .pillars { grid-template-columns: 1fr; } }
 
-/* ── Leistungen (Karten + Detailseite) ───────────────────────── */
+/* ── Leistungen-Übersicht (Homepage-Teaser) ─────────────────────
+   Bleibt bewusst als Icon-Karten-Grid – der einzige Karten-Moment
+   der Seite, die volle Liste auf leistungen.html nutzt stattdessen
+   die zurückhaltendere .service-rows-Regel-Liste weiter unten. ── */
 .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .service-card {
   display: flex;
@@ -358,6 +332,19 @@ p:last-child { margin-bottom: 0; }
 
 @media (max-width: 860px) { .service-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) { .service-grid { grid-template-columns: 1fr; } }
+
+/* ── Leistungen – volle Liste (leistungen.html) ─────────────────
+   Editorial Regel-Liste statt Karten-Wiederholung: Name links,
+   Beschreibung rechts, Trennlinie statt Schatten. ──────────────── */
+.service-rows { display: flex; flex-direction: column; }
+.service-row { display: grid; grid-template-columns: 220px 1fr; gap: 28px; padding: 28px 0; border-bottom: 1px solid var(--color-line); }
+.service-row:first-child { padding-top: 0; }
+.service-row:last-child { border-bottom: none; }
+.service-row h3 { margin: 0; font-size: 1.15rem; }
+.service-row p { margin: 0; color: var(--color-ink-soft); }
+@media (max-width: 700px) {
+  .service-row { grid-template-columns: 1fr; gap: 6px; padding: 22px 0; }
+}
 
 /* ── Team ────────────────────────────────────────────────────── */
 .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px 28px; }
@@ -388,6 +375,34 @@ p:last-child { margin-bottom: 0; }
   .split--reverse .split__media { order: -1; }
 }
 .split__media img { aspect-ratio: 4/3.4; }
+.split__media--portrait { position: relative; }
+.split__media--portrait img { aspect-ratio: 4/4.4; }
+
+/* ── Überlappendes Foto-Badge (Split-Media) ─────────────────────── */
+.split__badge {
+  position: absolute;
+  bottom: -22px;
+  right: -18px;
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  background: var(--color-terracotta);
+  color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10px;
+  box-shadow: var(--shadow-card);
+}
+.split__badge-num { font-family: var(--font-display); font-weight: 700; font-size: 2.2rem; line-height: 1; }
+.split__badge-label { font-size: 0.66rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; line-height: 1.25; margin-top: 4px; }
+@media (max-width: 520px) {
+  .split__badge { width: 96px; height: 96px; right: 6px; bottom: -14px; }
+  .split__badge-num { font-size: 1.6rem; }
+  .split__badge-label { font-size: 0.56rem; }
+}
 
 .checklist { margin-top: 1.4em; }
 .checklist li { display: flex; align-items: flex-start; gap: 0.7em; margin-bottom: 0.7em; }
@@ -426,6 +441,16 @@ p:last-child { margin-bottom: 0; }
 /* ── CTA-Band ────────────────────────────────────────────────── */
 .cta-band { text-align: center; }
 .cta-band .lead { margin: 0 auto 2em; }
+.cta-band__phone {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  color: var(--color-white);
+  margin: 0.2em 0 0.4em;
+  transition: color 0.2s var(--ease);
+}
+.cta-band__phone:hover { color: var(--color-terracotta); }
 
 /* ── Footer ──────────────────────────────────────────────────── */
 .site-footer { background: var(--color-sage-dark); color: rgba(255, 255, 255, 0.82); padding: 64px 0 28px; }
